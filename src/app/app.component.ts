@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Agent';
+  username =localStorage.getItem('username');
+  constructor(){
+    this.setUserNAme();
+  }
+
+  setUserNAme(){
+    try{
+      this.username = localStorage.getItem('username');
+    }
+    catch (err){
+
+    }
+  }
 }

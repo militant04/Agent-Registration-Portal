@@ -1,6 +1,14 @@
-<div class="row">
+<div style="margin-top: 20px;background-color: #d0d1d5; color: dimgray" class="row">
   <div class="col-md-12" style="margin-left: 5%; margin-top: 20px;">
-    <h5>Agent Registration</h5>
+    <h5>Agent Registration</h5><br>
+    <p>If you would like to become a recognised Software Reseller Agent,
+      please complete the following form. Please supply all required fields</p>
+    <div style="mrgin-top: 10px;" class="row">
+      <div class="alert alert-info"  *ngIf="showSuccessMessage == true">
+        Submitted successfully. <strong>Please await an Email with your Login credentials from the Administrator after your account
+        has been approved</strong>
+      </div>
+    </div>
     <form [formGroup]="this.customerService.form" (ngSubmit)="onSubmit()">
 
       <div style="width: 50%; display: block; float: left" class="col-sm-5">
@@ -31,7 +39,7 @@
       </div>
 
       <div class="form-group">
-        <label>Upload Documents</label>
+        <label>Upload Documents (.zip format) max 75MB</label>
         <input formControlName="image" (change)="onFileSelected($event)" type="file" class="form-control">
       </div>
 
@@ -58,7 +66,7 @@
            </div>
         <div class="form-group">
           <label>DOB</label>
-          <input formControlName="DOB" class="form-control">
+          <input type="date" formControlName="DOB" class="form-control">
         </div>
         <div class="form-group">
           <label>Nationality</label>
@@ -94,10 +102,9 @@
 
 
     </form>
-    <div class="alert alert-info"  *ngIf="showSuccessMessage == true">
-      Submitted successfully.
-    </div>
+
   </div>
+
   <div style="visibility: hidden;" class="col-md-7">
     <!--<app-customer-list></app-customer-list>-->
   </div>

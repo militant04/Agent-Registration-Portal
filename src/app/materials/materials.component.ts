@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./materials.component.css']
 })
 export class MaterialsComponent implements OnInit {
+   loggedInUser ='';
+  constructor() {
 
-  constructor() { }
+    this.loggedInUser = localStorage.getItem('username')
+  }
 
   ngOnInit() {
   }

@@ -31,15 +31,12 @@ export class HomeComponent implements OnInit {
     if (this.customerService.form.valid) {
       if (this.customerService.form.get('$key').value == null){
         this.customerService.insertCustomer(this.customerService.form.value, this.selectedFile);
-        console.log('i got to insert');
-
-        alert('New Agent records succesfully added');
-        //this.submitted = 'sds';
+        this.showSuccessMessage = true;
+        setTimeout(() => this.showSuccessMessage = false, 10000);
       }
 
       else
       {
-        console.log('i got to update');
         this.customerService.updateCustomer(this.customerService.form.value);
         this.showSuccessMessage = true;
 

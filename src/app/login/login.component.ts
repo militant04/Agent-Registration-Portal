@@ -31,7 +31,14 @@ export class LoginComponent implements OnInit {
       const result = this.afAuth.auth.signInWithEmailAndPassword(this.user.username,this.user.password)
         .then(auth => {
           this.loggedIn =true;
-          this.router.navigateByUrl('admin');
+          localStorage.setItem('username', this.user.username);
+          if(this.user.username = 'militant@gmailcom'|| 'admin@gmail.com'){
+            this.router.navigateByUrl('admin');
+          }
+          else{
+            this.loginMessage ="This user is registered in the system without Amin previledges";
+          }
+
         })
         .catch(err => {
           console.log(err.code);
