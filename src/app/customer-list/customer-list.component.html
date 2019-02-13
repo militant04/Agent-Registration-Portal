@@ -1,11 +1,12 @@
-<div style="width: 100%; margin-top: 30px;">
+<div style="margin-top: 30px;">
   <div *ngIf="showEmailOpening == true" style="margin-left: 20%;margin-bottom: 40px; width: 40%">
   <div class="progress">
     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
   </div>
-    <h5>Opening Email Application.....</h5>
+    <h5>The Agent has a gmail address..This will require sending email via your default mailbox</h5>
+    <h6>..Opening mailbox</h6>
   </div>
-  <div style="width: 50%;display: block;float:left" class="col-sm-10">
+  <div style="width: 50%;display: block;float:left" class="col-sm-12">
     <form style="margin-bottom: 20px;" class="form-inline">
       <input class="form-control" name="searchInput" placeholder="Search" #searchInput="ngModel" [(ngModel)]="searchText" style="width: 80%;">
       <button style="margin-left: 10px;" class="btn btn-primary" (click)="searchText=''">Cancel</button>
@@ -45,9 +46,9 @@
         </div>
       </div>
 
-      <div class="alert alert-danger" *ngIf="showDeletedMessage">
-        {{error}}
-      </div>
+      <!--<div class="alert alert-danger" *ngIf="showDeletedMessage">-->
+        <!--{{error}}-->
+      <!--</div>-->
 
       <ng-container *ngFor="let customer of customerArray">
 
@@ -59,7 +60,9 @@
 
           </td>
           <td>
-            <button class="btn btn-danger btn-sm" (click)="onDelete(customer.$key)">Delete</button>
+            <button class="btn btn-danger btn-sm" (click)="onDelete(customer.$key)">
+              <i class="fas fa-trash" style="color: #fff;"></i>
+            </button>
           </td>
         </tr>
       </ng-container>
@@ -71,7 +74,7 @@
   </div>
 
 
-  <div  style="width: 50%;display: block;float:left" class="col-sm-12">
+  <div  style="width: 50%;display: block;float:left;" class="col-sm-12">
     <h2>Agent Details</h2>
     <form [formGroup]="this.customerService.form" (ngSubmit)="generateEmailPassword()">
       <input type="hidden" formControlName="$key">
@@ -104,10 +107,20 @@
         <label>Upload Documents</label>
         <input disabled formControlName="image"  class="form-control">
       </div>
+      <!--<div class="form-group">-->
+        <!--<label *ngIf="imagee">{{imagee}}</label>-->
+
+      <!--</div>-->
+
 
       <div class="form-group">
-        <input type="submit" (click)="generateEmailPassword()" class="btn btn-primary" value="Approve">
-      </div>
+        <input  type="button" (click)="DownloadDoc()" class="btn btn-secondary" value="Download Agent Docs">
+
+        <input style="margin-left: 40px;" type="submit" (click)="generateEmailPassword()" class="btn btn-primary" value="Approve">
+
+        <input style="margin-left: 20px;" type="button" (click)="onDecline()" class="btn btn-danger" value="Decline">
+
+             </div>
 
 
     </form>

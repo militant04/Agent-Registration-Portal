@@ -13,6 +13,8 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { LoginComponent } from './login/login.component';
 import { MaterialsComponent } from './materials/materials.component';
 import { AgentLoginComponent } from './agent-login/agent-login.component';
+import {HttpClient, HttpClientModule, HttpHandler, HttpHeaders} from "@angular/common/http";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 
@@ -21,12 +23,12 @@ import { AgentLoginComponent } from './agent-login/agent-login.component';
     AppComponent, HomeComponent, CustomerListComponent, LoginComponent, MaterialsComponent, AgentLoginComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,NgbModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule,
+    AngularFireDatabaseModule,HttpClientModule,
     FormsModule,AppRoutingModule
   ],
-  providers: [CustomerService, AngularFireAuth],
+  providers: [CustomerService,HttpClient, AngularFireAuth],
   bootstrap: [AppComponent]
 })export class AppModule { }

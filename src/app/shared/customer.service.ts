@@ -91,6 +91,7 @@ export class CustomerService {
 
   populateForm(customer) {
     this.form.setValue(customer);
+    localStorage.setItem('imagee',customer.image);
   }
 
   updateCustomer(customer) {

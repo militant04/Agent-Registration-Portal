@@ -13,6 +13,13 @@ export class MaterialsComponent implements OnInit {
   }
 
   ngOnInit() {
+    let isEmpty = document.getElementById('youtube').innerHTML;
+    if(isEmpty ==="" || " " || "   "){
+      console.log('is empty')
+    }
+    else{
+      console.log('is now not empty')
+    }
   }
 
 }

@@ -1,13 +1,11 @@
+
 <div style="margin-top: 20px;background-color: #d0d1d5; color: dimgray" class="row">
+
   <div class="col-md-12" style="margin-left: 5%; margin-top: 20px;">
+    <div class="form-group">
     <h5>Agent Registration</h5><br>
     <p>If you would like to become a recognised Software Reseller Agent,
       please complete the following form. Please supply all required fields</p>
-    <div style="mrgin-top: 10px;" class="row">
-      <div class="alert alert-info"  *ngIf="showSuccessMessage == true">
-        Submitted successfully. <strong>Please await an Email with your Login credentials from the Administrator after your account
-        has been approved</strong>
-      </div>
     </div>
     <form [formGroup]="this.customerService.form" (ngSubmit)="onSubmit()">
 
@@ -66,7 +64,7 @@
            </div>
         <div class="form-group">
           <label>DOB</label>
-          <input type="date" formControlName="DOB" class="form-control">
+          <input type="date" ngbDatepicker #dp="ngbDatepicker" formControlName="DOB" class="form-control">
         </div>
         <div class="form-group">
           <label>Nationality</label>
@@ -105,7 +103,14 @@
 
   </div>
 
+
   <div style="visibility: hidden;" class="col-md-7">
     <!--<app-customer-list></app-customer-list>-->
+  </div>
+</div>
+<div style="margin-top: 10px;" class="row">
+  <div class="alert alert-info" style="width: 100%;"  *ngIf="showSuccessMessage == true">
+    Submitted successfully. <strong>Please await an Email with your Login credentials from the Administrator after your account
+    has been approved</strong>
   </div>
 </div>
